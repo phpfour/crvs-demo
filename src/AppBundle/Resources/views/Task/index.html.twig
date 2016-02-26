@@ -20,3 +20,15 @@
     {{ parent() }}
     {{ datatable_render_js(datatable) }}
 {% endblock %}
+
+{% block documentReady %}
+<script>
+
+jQuery(document).ready(function () {
+    $("#task_datatable").on('draw.dt', function () {
+        App.handleTaskLock();
+    });
+});
+
+</script>
+{% endblock %}

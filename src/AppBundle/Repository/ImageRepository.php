@@ -15,7 +15,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class ImageRepository extends EntityRepository
 {
-    public function populateImages(Task $task, Drive $drive)
+    public function populateImages(Task $task)
     {
         $images = $task->getImages();
         $imageUrls = explode("\n", $task->getImageUrls());
@@ -31,8 +31,7 @@ class ImageRepository extends EntityRepository
             $image = new Image();
             $image->setUrl($imageUrl);
             $image->setTask($task);
-            $image->setFetched(true);
-            $image->setContent($drive->getDocumentText($image->getDownloadLink()));
+            $image->setFetched(false);
 
             $this->getEntityManager()->persist($image);
         }
@@ -42,12 +41,23 @@ class ImageRepository extends EntityRepository
 
     public function fetchImageContents(Task $task, Drive $drive)
     {
-        $images = $task->getImages();
+        $images  = $task->getImages();
+        $success = 0;
 
         /** @var Image $image */
         foreach ($images as $image) {
-            $image->setContent($drive->getDocumentText($image->getUrl()));
+            $content = $drive->getDocumentText($image->getDownloadLink());
+            if (!empty($content)) {
+                $image->setContent($content);
+                $image->setFetched(true);
+                $this->getEntityManager()->persist($image);
+                $success++;
+            }
         }
+
+        $this->getEntityManager()->flush();
+
+        return $success;
     }
 
     public function updateImageContents($fields)
@@ -57,15 +67,18 @@ class ImageRepository extends EntityRepository
 
         foreach ($fields['image_id'] as $index => $id) {
 
+            /** @var Image $image */
             $image = $this->find($id);
+
+            /** @var Task $task */
             $task = $image->getTask();
 
             $fullContent .= $fields['image_content'][$index];
             $image->setContent($fields['image_content'][$index]);
 
             $this->getEntityManager()->persist($image);
-        }
 
+        }
 
         $task->setContents($fullContent);
         $this->getEntityManager()->persist($task);

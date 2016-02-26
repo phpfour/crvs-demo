@@ -87,13 +87,13 @@
                                     <div class="tab-content">
 
                                         {% for image in task.images %}
-                                            <div class="tab-pane {% if loop.first %}active{% endif %}" id="image_{{ loop.index }}">
+                                            <div class="tab-pane {% if loop.first %}active{% endif %} image" id="image_{{ loop.index }}">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <img src="{{ image.previewLink }}" style="width: 600px"/>
+                                                    <div class="col-md-12" style="height: 400px; overflow: scroll">
+                                                        <img src="{{ image.previewLink }}" style="width: 900px"/>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <textarea name="image_content[]" class="form-control" cols="100" rows="30">{{ image.content }}</textarea>
+                                                    <div class="col-md-12">
+                                                        <textarea name="image_content[]" class="form-control input-lg" cols="100" rows="15">{{ image.content }}</textarea>
                                                         <input type="hidden" name="image_id[]" value="{{ image.id }}"/>
                                                     </div>
                                                 </div>
@@ -124,4 +124,23 @@
 
     </div>
 
+{% endblock %}
+
+{% block documentReady %}
+<script>
+
+function resizeImageContainers() {
+    $('.image').find('img').each(function(index, element){
+        var width = $(this).parent().width() - 20;
+        $(element).css({'width': width + 'px'});
+    });
+}
+
+jQuery(document).ready(function() {
+    $('a[href="#tab_3"]').on('shown.bs.tab', function (e) {
+        resizeImageContainers()
+    });
+});
+
+</script>
 {% endblock %}

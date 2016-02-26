@@ -58,4 +58,14 @@ class Client
 
         return $this->client;
     }
+
+    /**
+     * Set access token
+     *
+     * @param $rawToken
+     */
+    public function setAccessToken($rawToken)
+    {
+        $this->getInstance()->setAccessToken(json_encode($rawToken));
+    }
 }

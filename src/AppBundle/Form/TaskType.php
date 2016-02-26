@@ -14,31 +14,35 @@ class TaskType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $textAreaAttr = ['cols' => 80, 'rows' => 5];
-
         $builder
             ->add('title', 'text', [
-                'label' => 'Task Title'
+                'label' => 'Title / Idea / Topic',
+                'attr' => ['placeholder' => 'The idea or topic associated with this task, e.g. Biography of Abdullah Ibn Masud (RA).']
             ])
             ->add('description', 'textarea', [
                 'label'    => 'Task Details',
                 'required' => false,
-                'attr'     => $textAreaAttr
+                'attr'     => [
+                    'rows' => 6,
+                    'placeholder' => 'Any specific instruction and/or direction that may need to be followed in carrying out this task'
+                ]
             ])
             ->add('reference', 'textarea', [
                 'label'    => 'Reference / Origin',
                 'required' => false,
-                'attr'     => $textAreaAttr
+                'attr'     => [
+                    'rows' => 6,
+                    'placeholder' => 'Reference to the original source of the content'
+                ]
             ])
             ->add('imageUrls', 'textarea', [
                 'label' => 'Image URLs',
-                'attr'  => $textAreaAttr
+                'attr'  => [
+                    'rows' => 12,
+                    'placeholder' => 'Link to images shared through Google Drive and/or direct link'
+                ]
             ])
-            ->add('contents', 'textarea', [
-                'label'    => 'Contents',
-                'required' => false,
-                'attr'     => ['cols' => 80, 'rows' => 20, 'class' => 'input-lg']
-            ]);
+        ;
     }
 
     /**

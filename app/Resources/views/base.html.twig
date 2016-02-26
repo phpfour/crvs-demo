@@ -81,10 +81,10 @@
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    {#<footer class="main-footer">
         <!-- Default to the left -->
         <strong>Copyright &copy; 2015 <a href="#">IslamKosh</a>.</strong>
-    </footer>
+    </footer>#}
 
 </div>
 <!-- ./wrapper -->
@@ -104,14 +104,14 @@
 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 
-{% block documentReady %}
-    <script>
-        jQuery(document).ready(function() {
-            App.init();
-        });
-    </script>
 {% endblock %}
 
+{% block documentReady %}
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
 {% endblock %}
 
 </body>

@@ -60,6 +60,8 @@ task_create:
         expose: true
     defaults:
         _controller: app.controller.task:createAction
+        _sylius:
+            redirect: task_show
 
 task_show:
     path: /tasks/{id}
@@ -76,6 +78,8 @@ task_update:
         expose: true
     defaults:
         _controller: app.controller.task:updateAction
+        _sylius:
+            form: app_task_edit
 
 task_delete:
     path: /tasks/{id}

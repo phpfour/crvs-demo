@@ -97,20 +97,11 @@ class TaskController extends ResourceController
 
     public function lockAction(Request $request)
     {
-        if (!$this->get('session')->has('oauth_token')) {
-            return $this->redirectToRoute('google_login');
-        }
-
         /** @var Task $task */
         $task = $this->findOr404($request);
 
-        /** @var Drive $drive */
-        $drive = $this->get('app.google.drive');
+        $this->getRepository()->lockTask($task, $this->getUser());
 
-        if ($task) {
-            $this->getRepository()->lockTask($task, $this->getUser());
-            $this->getDoctrine()->getRepository('AppBundle:Image')->populateImages($task, $drive);
-            return $this->redirectToRoute('group_task_index');
-        }
+        return $this->redirectToRoute('task_update', ['id' => $task->getId()]);
     }
 }

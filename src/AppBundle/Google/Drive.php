@@ -3,7 +3,6 @@
 namespace AppBundle\Google;
 
 use GuzzleHttp\Psr7\Request;
-use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
 
 class Drive
 {
@@ -13,26 +12,6 @@ class Drive
     public function __construct(Client $client)
     {
         $this->client = $client;
-    }
-
-    public function getGoogleDriveContent($fileId)
-    {
-        $client  = $this->client->getInstance();
-        $service = new \Google_Service_Drive($client);
-
-        $file = $service->files->get($fileId);
-        $exportLinks  = $file->getExportLinks(); var_dump($exportLinks); die;
-        $plainTextUrl = $exportLinks['text/plain'];
-
-        $httpClient = $client->authorize();
-        $request    = new Request('GET', $plainTextUrl);
-        $response   = $httpClient->send($request);
-
-        if ($response) {
-            return $response->getBody()->getContents();
-        }
-
-        return false;
     }
 
     public function getDocumentText($path)

@@ -37,23 +37,36 @@ class OAuthUserProvider extends BaseClass
 
         $this->session->set('oauth_token', $response->getOAuthToken());
 
-        //check if the user already has the corresponding social account
+        // Check if the user already has the corresponding social account
         if (null === $user) {
-            //check if the user has a normal account
+
+            // Check if the user has a normal account
             $user = $this->userManager->findUserByEmail($email);
+
             if (null === $user || !$user instanceof UserInterface) {
-                //if the user does not have a normal account, set it up:
+                // If the user does not have a normal account, set it up
                 $user = $this->userManager->createUser();
                 $user->setEmail($email);
                 $user->setPlainPassword(md5(uniqid()));
                 $user->setEnabled(true);
             }
+
             $user->setGoogleId($socialId);
+            $user->setProfilePicture($response->getProfilePicture());
+            $user->setAccessToken($response->getAccessToken());
+
             $this->userManager->updateUser($user);
+
         } else {
-            //and then login the user
+
+            $user->setProfilePicture($response->getProfilePicture());
+            $user->setAccessToken($response->getAccessToken());
+            $this->userManager->updateUser($user);
+
+            // Login the user
             $checker = new UserChecker();
             $checker->checkPreAuth($user);
+
         }
 
         return $user;

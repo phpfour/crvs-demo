@@ -8,6 +8,8 @@ class DashboardController extends Controller
 {
     public function indexAction()
     {
-        return $this->render("AppBundle:Dashboard:index.html.twig");
+        return $this->render("AppBundle:Dashboard:index.html.twig", [
+            'stats' => $this->get('app.repository.task')->getStats()
+        ]);
     }
 }

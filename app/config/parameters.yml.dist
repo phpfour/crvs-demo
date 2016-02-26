@@ -5,7 +5,7 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
     database_port:     ~
-    database_name:     symfony
+    database_name:     islamkosh
     database_user:     root
     database_password: ~
     database_charset:  UTF8
@@ -20,7 +20,7 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-    google_oauth2_client_id: ~
-    google_oauth2_client_secret: ~
-    google_oauth2_redirect_uri: ~
+    google_oauth2_client_id: 371948279954-gj0t3njr58tnh90dvbhd58o3apk61f0e.apps.googleusercontent.com
+    google_oauth2_client_secret: '-lz-LxdtXR7adAJhuGGa8a1y'
+    google_oauth2_redirect_uri: 'http://islamkosh.dev/login/check-google'
     google_oauth2_scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"

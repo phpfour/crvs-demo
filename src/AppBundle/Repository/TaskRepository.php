@@ -21,4 +21,20 @@ class TaskRepository extends EntityRepository
         $this->getEntityManager()->persist($task);
         $this->getEntityManager()->flush();
     }
+
+    public function getStats()
+    {
+        $stats = [];
+
+        foreach (['new', 'wip', 'in_review', 'in_approval'] as $state) {
+            $stats[$state] = $this->getQueryBuilder()
+                ->select('COUNT (o.id)')
+                ->where('o.state = :state')
+                ->setParameter('state', $state)
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+
+        return $stats;
+    }
 }

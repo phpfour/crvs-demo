@@ -21,20 +21,23 @@ class TaskType extends AbstractType
                 'label' => 'Task Title'
             ])
             ->add('description', 'textarea', [
-                'label' => 'Task Details',
-                'attr'  => $textAreaAttr
+                'label'    => 'Task Details',
+                'required' => false,
+                'attr'     => $textAreaAttr
             ])
             ->add('reference', 'textarea', [
-                'label' => 'Reference / Origin',
-                'attr'  => $textAreaAttr
+                'label'    => 'Reference / Origin',
+                'required' => false,
+                'attr'     => $textAreaAttr
             ])
             ->add('imageUrls', 'textarea', [
                 'label' => 'Image URLs',
                 'attr'  => $textAreaAttr
             ])
             ->add('contents', 'textarea', [
-                'label' => 'Contents',
-                'attr'  => ['cols' => 80, 'rows' => 20]
+                'label'    => 'Contents',
+                'required' => false,
+                'attr'     => ['cols' => 80, 'rows' => 20, 'class' => 'input-lg']
             ]);
     }
 

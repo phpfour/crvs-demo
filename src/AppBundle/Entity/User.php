@@ -30,12 +30,12 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $firstName;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $lastName;
 
@@ -45,6 +45,27 @@ class User extends BaseUser
     * @ORM\Column(name="google_id", type="string", nullable=true)
     */
     private $googleId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_id", type="string", nullable=true)
+     */
+    private $facebookId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profile_picture", type="string", nullable=true)
+     */
+    private $profilePicture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="access_token", type="string", nullable=true)
+     */
+    private $accessToken;
 
     /**
      * @return string
@@ -65,7 +86,6 @@ class User extends BaseUser
     {
         return $this->id;
     }
-
 
     /**
      * @return mixed
@@ -115,6 +135,63 @@ class User extends BaseUser
     public function setGoogleId($googleId)
     {
         $this->googleId = $googleId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param string $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param string $profilePicture
+     *
+     * @return User
+     */
+    public function setProfilePicture($profilePicture)
+    {
+        $this->profilePicture = $profilePicture;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string $accessToken
+     *
+     * @return User
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
         return $this;
     }
 

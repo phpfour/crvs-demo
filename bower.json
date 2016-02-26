@@ -1,0 +1,26 @@
+{
+    "name": "IslamKosh Core",
+    "homepage": "https://github.com/IslamKosh/core",
+    "authors": [
+        "Mohammad Emran Hasan <phpfour@gmail.com>"
+    ],
+    "description": "Core platform for IslamKosh.",
+    "main": "",
+    "moduleType": [],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "web/assets",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "font-awesome": "fontawesome#~4.5.0",
+        "datatables": "~1.10.11",
+        "AdminLTE": "admin-lte#~2.3.2",
+        "moment": "~2.11.2"
+    }
+}

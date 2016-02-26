@@ -2,23 +2,9 @@
 
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
-{% block pageHeader %}
+{% block pageTitle %}Edit Task{% endblock %}
 
-    <!-- BEGIN PAGE HEADER-->
-    <h3 class="page-title">
-        {% block pageTitle %}Edit Task{% endblock %}
-    </h3>
-
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li><i class="fa fa-home"></i><a href="/">Home</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="{{ path('my_task_index') }}">Tasks</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="#">Edit Task</a></li>
-        </ul>
-    </div>
-    <!-- END PAGE HEADER-->
-
-{% endblock %}
+{% block bodyClass %}edit-task{% endblock %}
 
 {% block body %}
 
@@ -26,97 +12,107 @@
 
         <div class="col-md-12">
 
-            <div class="tabbable">
+            <div class="box">
 
-                <ul class="nav nav-tabs nav-tabs-lg">
-                    <li class="active"><a href="#tab_1" data-toggle="tab">Summary</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">Contents</a></li>
-                    <li><a href="#tab_3" data-toggle="tab">Images</a></li>
-                </ul>
+                <div class="box-body">
 
-                <div class="tab-content">
+                    <div class="nav-tabs-custom">
 
-                    <div class="tab-pane active" id="tab_1">
-
-                        <form action="{{ path('task_update', {'id': task.id}) }}" method="post" {{ form_enctype(form) }}>
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                {{ form_row(form.title) }}
-                                {{ form_row(form.description) }}
-                                {{ form_row(form.reference) }}
-                                {{ form_row(form._token) }}
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                        </div>
-
-                        <input class="btn green" type="submit" value=" Save Task " />
-                        <input type="hidden" name="_method" value="PUT" />
-
-                        </form>
-
-                    </div>
-
-                    <div class="tab-pane" id="tab_2">
-
-                        <form action="{{ path('task_update', {'id': task.id}) }}" method="post" {{ form_enctype(form) }}>
-
-                        <div class="row">
-
-                            <div class="col-md-12">
-                                {{ form_widget(form.contents) }}
-                                {{ form_row(form._token) }}
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                        </div>
-
-                        <input class="btn green" type="submit" value=" Save Task " />
-                        <input type="hidden" name="_method" value="PUT" />
-
-                        </form>
-
-                    </div>
-
-                    <div class="tab-pane" id="tab_3">
-
-                        <form action="{{ path('image_update') }}" method="post" {{ form_enctype(form) }}>
-
-                        <ul class="nav nav-pills">
-                            {% for image in task.images %}
-                            <li {% if loop.first %}class="active"{% endif %}>
-                                <a href="#image_{{ loop.index }}" data-toggle="tab">Page {{ loop.index }}</a>
-                            </li>
-                            {% endfor %}
+                        <ul class="nav nav-tabs nav-tabs-lg">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Summary</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">Contents</a></li>
+                            <li><a href="#tab_3" data-toggle="tab">Images</a></li>
                         </ul>
 
                         <div class="tab-content">
 
-                            {% for image in task.images %}
-                            <div class="tab-pane {% if loop.first %}active{% endif %}" id="image_{{ loop.index }}">
-                                <div class="row">
-                                    <div class="col-md-6"><img src="{{ image.previewLink }}" style="width: 600px" /></div>
-                                    <div class="col-md-6">
-                                        <textarea name="image_content[]" class="form-control" cols="100" rows="30">{{ image.content }}</textarea>
-                                        <input type="hidden" name="image_id[]" value="{{ image.id }}" />
+                            <div class="tab-pane active" id="tab_1">
+
+                                <form action="{{ path('task_update', {'id': task.id}) }}" method="post" {{ form_enctype(form) }}>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            {{ form_row(form.title) }}
+                                            {{ form_row(form.description) }}
+                                            {{ form_row(form.reference) }}
+                                            {{ form_row(form._token) }}
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
                                     </div>
-                                </div>
+
+                                    <input class="btn btn-success" type="submit" value=" Save Task "/>
+                                    <input type="hidden" name="_method" value="PUT"/>
+
+                                </form>
+
                             </div>
-                            {% endfor %}
+
+                            <div class="tab-pane" id="tab_2">
+
+                                <form action="{{ path('task_update', {'id': task.id}) }}" method="post" {{ form_enctype(form) }}>
+
+                                    <div class="row" style="margin: 10px 0;">
+
+                                        <div class="col-md-12" style="margin-left: 0;">
+                                            {{ form_widget(form.contents) }}
+                                            {{ form_row(form._token) }}
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                    </div>
+
+                                    <input class="btn btn-success" type="submit" value=" Save Task "/>
+                                    <input type="hidden" name="_method" value="PUT"/>
+
+                                </form>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab_3">
+
+                                <form action="{{ path('image_update') }}" method="post" {{ form_enctype(form) }}>
+
+                                    <ul class="nav nav-pills" style="margin: 10px 0;">
+                                        {% for image in task.images %}
+                                            <li {% if loop.first %}class="active"{% endif %}>
+                                                <a href="#image_{{ loop.index }}" data-toggle="tab">Page {{ loop.index }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+
+                                    <div class="tab-content">
+
+                                        {% for image in task.images %}
+                                            <div class="tab-pane {% if loop.first %}active{% endif %}" id="image_{{ loop.index }}">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <img src="{{ image.previewLink }}" style="width: 600px"/>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <textarea name="image_content[]" class="form-control" cols="100" rows="30">{{ image.content }}</textarea>
+                                                        <input type="hidden" name="image_id[]" value="{{ image.id }}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                    <div class="form-actions" style="margin-top: 20px;">
+                                        <input class="btn btn-success" type="submit" value=" Save Contents "/>
+                                    </div>
+
+                                </form>
+
+                            </div>
 
                         </div>
-
-                        <div class="clearfix"></div>
-
-                        <div class="form-actions" style="margin-top: 20px;">
-                            <input class="btn green" type="submit" value=" Save Contents " />
-                        </div>
-
-                        </form>
 
                     </div>
 

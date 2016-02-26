@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
@@ -54,21 +54,18 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
+        {{ include('flash_message.html.twig') }}
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>{% block pageTitle %}Dashboard <small>statistics and more</small>{% endblock %}</h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
+            <h1>{% block pageTitle %}Dashboard <small>statistics and more</small>{% endblock %}{% block titleAction %}{% endblock %}</h1>
+            <div class="breadcrumb">{% block breadcrumb %}{% endblock %}</div>
         </section>
+
+        <div class="clearfix"></div>
 
         <!-- Main content -->
         <section class="content">
-
-            <div class="row">
-                <div class="col-lg-12"> {% include 'flash_message.html.twig' %} </div>
-            </div>
 
             {% block body %}
                 <!-- BEGIN PAGE CONTENT-->

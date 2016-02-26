@@ -87,7 +87,7 @@ class TaskDatatable extends AbstractDatatableView
             ])
             ->add('title', 'column', [
                 'title' => 'Title',
-                'width' => '50%'
+                'width' => '40%'
             ])
             ->add('state', 'column', [
                 'title'      => 'State',
@@ -106,65 +106,61 @@ class TaskDatatable extends AbstractDatatableView
                 'searchable' => false
             ]);
 
+        $actions[] = [
+            'route'            => 'task_show',
+            'route_parameters' => [
+                'id' => 'id'
+            ],
+            'label'            => 'View',
+            'icon'             => 'fa fa-search',
+            'attributes'       => [
+                'rel'   => 'tooltip',
+                'title' => 'View task',
+                'class' => 'btn btn-xs',
+                'role'  => 'button'
+            ]
+        ];
+
         if ($this->lockOnly) {
 
-            $this->columnBuilder->add(null, 'action', [
-                'title'   => $this->translator->trans('datatables.actions.title'),
-                'actions' => [
-                    [
-                        'route'            => 'task_lock',
-                        'route_parameters' => [
-                            'id' => 'id'
-                        ],
-                        'label'            => 'Lock',
-                        'icon'             => 'glyphicon glyphicon-lock',
-                        'attributes'       => [
-                            'rel'   => 'tooltip',
-                            'title' => 'Lock this task',
-                            'class' => 'btn btn-primary btn-xs btn-lock-task',
-                            'role'  => 'button'
-                        ],
-                    ]
-                ]
-            ]);
+            $actions[] = [
+                'route'            => 'task_lock',
+                'route_parameters' => [
+                    'id' => 'id'
+                ],
+                'label'            => 'Lock',
+                'icon'             => 'fa fa-lock',
+                'attributes'       => [
+                    'rel'   => 'tooltip',
+                    'title' => 'Lock this task',
+                    'class' => 'btn btn-xs btn-lock-task',
+                    'role'  => 'button'
+                ],
+            ];
 
         } else {
 
-            $this->columnBuilder->add(null, 'action', [
-                'title'   => $this->translator->trans('datatables.actions.title'),
-                'actions' => [
-                    [
-                        'route'            => 'task_show',
-                        'route_parameters' => [
-                            'id' => 'id'
-                        ],
-                        'label'            => $this->translator->trans('datatables.actions.show'),
-                        'icon'             => 'glyphicon glyphicon-eye-open',
-                        'attributes'       => [
-                            'rel'   => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.show'),
-                            'class' => 'btn btn-info btn-xs',
-                            'role'  => 'button'
-                        ],
-                    ],
-                    [
-                        'route'            => 'task_update',
-                        'route_parameters' => [
-                            'id' => 'id'
-                        ],
-                        'label'            => $this->translator->trans('datatables.actions.edit'),
-                        'icon'             => 'glyphicon glyphicon-edit',
-                        'attributes'       => [
-                            'rel'   => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.edit'),
-                            'class' => 'btn btn-primary btn-xs',
-                            'role'  => 'button'
-                        ],
-                    ]
-                ]
-            ]);
+            $actions[] = [
+                'route'            => 'task_update',
+                'route_parameters' => [
+                    'id' => 'id'
+                ],
+                'label'            => $this->translator->trans('datatables.actions.edit'),
+                'icon'             => 'fa fa-edit',
+                'attributes'       => [
+                    'rel'   => 'tooltip',
+                    'title' => $this->translator->trans('datatables.actions.edit'),
+                    'class' => 'btn btn-xs',
+                    'role'  => 'button'
+                ],
+            ];
 
         }
+
+        $this->columnBuilder->add(null, 'action', [
+            'title'   => $this->translator->trans('datatables.actions.title'),
+            'actions' => $actions
+        ]);
     }
 
     /**

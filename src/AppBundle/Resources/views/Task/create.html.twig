@@ -2,36 +2,21 @@
 
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
-{% block pageHeader %}
-    <!-- BEGIN PAGE HEADER-->
-    <h3 class="page-title">
-        {% block pageTitle %}Create Task{% endblock %}
-    </h3>
-
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li><i class="fa fa-home"></i><a href="/">Home</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="{{ path('task_index') }}">Tasks</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="#">New Task</a></li>
-        </ul>
-    </div>
-    <!-- END PAGE HEADER-->
-
-{% endblock %}
+{% block pageTitle %}Create Task{% endblock %}
 
 {% block body %}
 
     <div class="row">
-
         <div class="col-md-6">
-
-            <form action="{{ path('task_create') }}" method="post" {{ form_enctype(form) }}>
-                {{ form_widget(form) }}
-                <input class="btn green" type="submit" value=" Create Task " />
-            </form>
-
+            <div class="box">
+                <form role="form" action="{{ path('task_create') }}" method="post" {{ form_enctype(form) }}>
+                    <div class="box-body">
+                        {{ form_widget(form) }}
+                        <input class="btn btn-primary" type="submit" value=" Create Task "/>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </div>
 
 {% endblock %}

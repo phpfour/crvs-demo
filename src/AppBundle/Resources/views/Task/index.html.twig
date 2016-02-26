@@ -1,25 +1,11 @@
 {% extends '::base.html.twig' %}
 
-{% block pageHeader %}
-    <!-- BEGIN PAGE HEADER-->
-    <h3 class="page-title">
-        {% block pageTitle %}{{ pageTitle }}{% endblock %}
-    </h3>
+{% block pageTitle %}{{ pageTitle }}{% endblock %}
 
+{% block titleAction %}
     {% if is_granted('ROLE_EDITOR') %}
-    <div class="actions pull-right">
-        <a class="btn default green" href="{{ path('task_create') }}">Create Task</a>
-    </div>
+        <a class="btn btn-success btn-xs" href="{{ path('task_create') }}"><i class="fa fa-plus"></i> Create Task</a>
     {% endif %}
-
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li><i class="fa fa-home"></i><a href="/">Home</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="{{ path('task_index') }}">{{ pageTitle }}</a></li>
-        </ul>
-    </div>
-    <!-- END PAGE HEADER-->
-
 {% endblock %}
 
 {% block body %}

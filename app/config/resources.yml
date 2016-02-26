@@ -1,0 +1,18 @@
+sylius_resource:
+    resources:
+        app.task:
+            driver: doctrine/orm
+            object_manager: default
+            templates: AppBundle:Task
+            classes:
+                model: AppBundle\Entity\Task
+                controller: AppBundle\Controller\TaskController
+                repository: AppBundle\Repository\TaskRepository
+        app.image:
+            driver: doctrine/orm
+            object_manager: default
+            templates: AppBundle:Image
+            classes:
+                model: AppBundle\Entity\Image
+                controller: AppBundle\Controller\ImageController
+                repository: AppBundle\Repository\ImageRepository

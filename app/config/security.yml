@@ -1,0 +1,57 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    providers:
+        in_memory:
+            memory: ~
+
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN:   [ROLE_ADMIN]
+        ROLE_ADMIN:         [ROLE_EDITOR]
+        ROLE_EDITOR:        [ROLE_APPROVER]
+        ROLE_APPROVER:      [ROLE_REVIEWER]
+        ROLE_REVIEWER:      [ROLE_CONTRIBUTOR]
+        ROLE_CONTRIBUTOR:   [ROLE_USER]
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                remember_me: true
+            oauth:
+                failure_path: /connect/google
+                login_path: /connect/google
+                check_path: /connect/google
+                provider: fos_userbundle
+                resource_owners:
+                    google: "/login/check-google"
+                oauth_user_provider:
+                    service: app.provider.oauth
+            logout:
+                path:   /logout
+                target: /login
+            anonymous:    true
+            remember_me:
+                key: "%secret%"
+                lifetime: 604800 # 7 days in seconds
+                path: /
+                domain: ~ # Defaults to the current domain from $_SERVER
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: ROLE_USER }
+        - { path: ^/tasks/, role: ROLE_USER }
+        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
+
+

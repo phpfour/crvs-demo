@@ -1,0 +1,46 @@
+.login .content {
+    background-color: #fff;
+}
+
+.page-header.navbar .page-logo {
+    width: 150px;
+}
+
+.page-header.navbar .page-logo > .logo-image, .page-header.navbar .page-logo > a {
+    color: #fff;
+    font-size: 20px;
+    padding-top: 8px;
+}
+
+/* Elements customization */
+.list-group-item.one-fifth {
+    width: 20%;
+    display: inline-block;
+    margin-right: 0;
+    text-align: center;
+}
+.input-lg.full-size {
+    padding: 0;
+}
+
+.panel-heading .actions {
+    margin: -5px -10px 0 0;
+}
+
+.page-container-bg-solid .page-title {
+    margin-top: 0;
+}
+
+.tiles .tile {
+    margin-right: 20px;
+}
+
+.tiles .tile .tile-object > .name {
+    position: relative;
+    line-height: 18px;
+    text-align: center;
+}
+
+.table-scrollable {
+    border: none !important;
+}

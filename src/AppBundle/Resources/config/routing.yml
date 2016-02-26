@@ -1,0 +1,100 @@
+### Global Routes ###
+
+dashboard:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Dashboard:index
+
+### Task Resource Routes ###
+
+task_index:
+    path: /tasks/index
+    methods: [GET]
+    defaults:
+        _controller: app.controller.task:indexAction
+        action: show
+
+task_results:
+    path: /tasks/results
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:resultsAction
+
+group_task_index:
+    path: /tasks/group
+    methods: [GET]
+    defaults:
+        _controller: app.controller.task:groupTasksAction
+        action: show
+
+group_task_results:
+    path: /tasks/group/results
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:groupTasksResultsAction
+
+my_task_index:
+    path: /tasks/my
+    methods: [GET]
+    defaults:
+        _controller: app.controller.task:myTasksAction
+        action: show
+
+my_task_results:
+    path: /tasks/my/results
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:myTasksResultsAction
+
+task_create:
+    path: /tasks/new
+    methods: [GET, POST]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:createAction
+
+task_show:
+    path: /tasks/{id}
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:showAction
+
+task_update:
+    path: /tasks/{id}/edit
+    methods: [GET, PUT]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:updateAction
+
+task_delete:
+    path: /tasks/{id}
+    methods: [DELETE]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:deleteAction
+
+task_lock:
+    path: /tasks/{id}/lock
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.task:lockAction
+
+image_update:
+    path: /images/update
+    methods: [POST]
+    defaults:
+        _controller: AppBundle:Image:updateTaskImages

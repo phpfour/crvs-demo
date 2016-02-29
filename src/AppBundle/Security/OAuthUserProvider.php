@@ -47,6 +47,8 @@ class OAuthUserProvider extends BaseClass
                 // If the user does not have a normal account, set it up
                 $user = $this->userManager->createUser();
                 $user->setUsername($response->getUsername());
+                $user->setFirstName($response->getFirstName());
+                $user->setLastName($response->getLastName());
                 $user->setEmail($email);
                 $user->setPlainPassword(md5(uniqid()));
                 $user->setRoles(['ROLE_CONTRIBUTOR']);

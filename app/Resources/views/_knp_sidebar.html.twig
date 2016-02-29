@@ -100,8 +100,8 @@
         {% if item.attribute('icon') is not empty  %}
             <i class="{{ item.attribute('icon') }}"></i>
         {% endif %}
-        {{ block('label') }}
-        <b class="caret"></b>
+        <span>{{ block('label') }}</span>
+        <i class="fa fa-angle-left pull-right"></i>
     </a>
 {% endblock %}
 

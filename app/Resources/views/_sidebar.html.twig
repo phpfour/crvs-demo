@@ -15,16 +15,5 @@
 
     {{ knp_menu_render('main', {'currentClass': 'active', 'template': '::_knp_sidebar.html.twig'}) }}
 
-    {#<ul class="sidebar-menu">
-        <li class="header">HEADER</li>
-        <li><a href="{{ path('dashboard') }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-        {% if is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('task_index') }}"><i class="fa fa-tasks"></i><span>All Tasks</span></a></li>
-        {% endif %}
-        <li><a href="{{ path('group_task_index') }}"><i class="fa fa-users"></i><span>Group Tasks</span></a></li>
-        <li><a href="{{ path('my_task_index') }}"><i class="fa fa-user"></i><span>My Tasks</span></a></li>
-    </ul>#}
-    <!-- /.sidebar-menu -->
-
 </section>
 <!-- /.sidebar -->

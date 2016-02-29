@@ -48,6 +48,7 @@ class OAuthUserProvider extends BaseClass
                 $user = $this->userManager->createUser();
                 $user->setEmail($email);
                 $user->setPlainPassword(md5(uniqid()));
+                $user->setRoles(['ROLE_CONTRIBUTOR']);
                 $user->setEnabled(true);
             }
 

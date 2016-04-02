@@ -14,11 +14,7 @@ security:
 
     role_hierarchy:
         ROLE_SUPER_ADMIN:   [ROLE_ADMIN]
-        ROLE_ADMIN:         [ROLE_EDITOR]
-        ROLE_EDITOR:        [ROLE_APPROVER]
-        ROLE_APPROVER:      [ROLE_REVIEWER]
-        ROLE_REVIEWER:      [ROLE_CONTRIBUTOR]
-        ROLE_CONTRIBUTOR:   [ROLE_USER]
+        ROLE_OPERATOR:      [ROLE_USER]
 
     firewalls:
         main:
@@ -27,15 +23,15 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 remember_me: true
-            oauth:
-                failure_path: /connect/google
-                login_path: /connect/google
-                check_path: /connect/google
-                provider: fos_userbundle
-                resource_owners:
-                    google: "/login/check-google"
-                oauth_user_provider:
-                    service: app.provider.oauth
+#            oauth:
+#                failure_path: /connect/google
+#                login_path: /connect/google
+#                check_path: /connect/google
+#                provider: fos_userbundle
+#                resource_owners:
+#                    google: "/login/check-google"
+#                oauth_user_provider:
+#                    service: app.provider.oauth
             logout:
                 path:   /logout
                 target: /login
@@ -48,10 +44,6 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, role: ROLE_USER }
-        - { path: ^/tasks/, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
 
 

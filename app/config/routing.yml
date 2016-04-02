@@ -1,24 +1,24 @@
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /connect
-
-hwi_oauth_login:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /google/login
-
-google_login:
-    pattern: /login/check-google
-
+#hwi_oauth_redirect:
+#    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+#    prefix:   /connect
+#
+#hwi_oauth_login:
+#    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+#    prefix:   /google/login
+#
+#google_login:
+#    pattern: /login/check-google
+#
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+#
+#fos_js_routing:
+#    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 app_resources:
     resource: "@AppBundle/Resources/config/routing.yml"
 
-easy_admin_bundle:
-    resource: "@EasyAdminBundle/Controller/"
-    type:     annotation
-    prefix:   /admin
+#easy_admin_bundle:
+#    resource: "@EasyAdminBundle/Controller/"
+#    type:     annotation
+#    prefix:   /admin

@@ -1,18 +1,19 @@
 sylius_resource:
     resources:
-        app.task:
+        app.student:
             driver: doctrine/orm
             object_manager: default
-            templates: AppBundle:Task
+            templates: AppBundle:Education
             classes:
-                model: AppBundle\Entity\Task
-                controller: AppBundle\Controller\TaskController
-                repository: AppBundle\Repository\TaskRepository
-        app.image:
-            driver: doctrine/orm
-            object_manager: default
-            templates: AppBundle:Image
-            classes:
-                model: AppBundle\Entity\Image
-                controller: AppBundle\Controller\ImageController
-                repository: AppBundle\Repository\ImageRepository
+                model: AppBundle\Entity\PrimaryEducation
+                controller: AppBundle\Controller\PrimaryEducationController
+                repository: AppBundle\Repository\PrimaryEducationRepository
+
+#        app.image:
+#            driver: doctrine/orm
+#            object_manager: default
+#            templates: AppBundle:Image
+#            classes:
+#                model: AppBundle\Entity\Image
+#                controller: AppBundle\Controller\ImageController
+#                repository: AppBundle\Repository\ImageRepository

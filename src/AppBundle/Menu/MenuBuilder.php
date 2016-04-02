@@ -28,27 +28,30 @@ class MenuBuilder
         $menu->addChild('Dashboard', ['route' => 'dashboard'])
             ->setAttribute('icon', 'fa fa-dashboard')
         ;
-
-        $menu->addChild('Tasks')
-            ->setAttribute('dropdown', true)
-            ->setAttribute('icon', 'fa fa-tasks')
-            ->setLinkAttribute('data-hover', 'dropdown')
-            ->setLinkAttribute('data-close-others', 'true')
+        $menu->addChild('Students', ['route' => 'app_students'])
+             ->setAttribute('icon', 'fa fa-user')
         ;
-
-        if ($this->authorizationChecker->isGranted('ROLE_EDITOR')) {
-            $menu['Tasks']->addChild('All Tasks', ['route' => 'task_index'])
-                ->setAttribute('icon', 'fa fa-suitcase')
-            ;
-        }
-
-        $menu['Tasks']->addChild('Group Tasks', ['route' => 'group_task_index'])
-            ->setAttribute('icon', 'fa fa-users')
-        ;
-
-        $menu['Tasks']->addChild('My Tasks', ['route' => 'my_task_index'])
-            ->setAttribute('icon', 'fa fa-user')
-        ;
+//
+//        $menu->addChild('Tasks')
+//            ->setAttribute('dropdown', true)
+//            ->setAttribute('icon', 'fa fa-tasks')
+//            ->setLinkAttribute('data-hover', 'dropdown')
+//            ->setLinkAttribute('data-close-others', 'true')
+//        ;
+//
+//        if ($this->authorizationChecker->isGranted('ROLE_EDITOR')) {
+//            $menu['Tasks']->addChild('All Tasks', ['route' => 'task_index'])
+//                ->setAttribute('icon', 'fa fa-suitcase')
+//            ;
+//        }
+//
+//        $menu['Tasks']->addChild('Group Tasks', ['route' => 'group_task_index'])
+//            ->setAttribute('icon', 'fa fa-users')
+//        ;
+//
+//        $menu['Tasks']->addChild('My Tasks', ['route' => 'my_task_index'])
+//            ->setAttribute('icon', 'fa fa-user')
+//        ;
 
         return $menu;
     }

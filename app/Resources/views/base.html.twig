@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}Welcome!{% endblock %} | IslamKosh Entry Panel</title>
+    <title>{% block title %}Welcome!{% endblock %} | Ministry of Education</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/datatables/media/css/dataTables.bootstrap.css') }} "/>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {% endblock %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,9 +33,9 @@
         <!-- Logo -->
         <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini">IK</span>
+            <span class="logo-mini">MOE</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Islam</b>Kosh</span>
+            <span class="logo-lg">Ministry of <b>Education</b></span>
         </a>
 
         <!-- Header Navbar -->
@@ -96,12 +95,8 @@
 <script src="{{ asset('assets/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/AdminLTE/dist/js/app.min.js') }}"></script>
 
-<script src="{{ asset('assets/moment/min/moment.min.js') }}"></script>
-<script src="{{ asset('assets/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/datatables/media/js/dataTables.bootstrap.js') }}"></script>
-
-<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{#<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>#}
+{#<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>#}
 <script src="{{ asset('js/app.js') }}"></script>
 
 {% endblock %}

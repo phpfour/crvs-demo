@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block pageTitle %}Student list{% endblock %}
+
+{% block titleAction %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {#<a class="btn btn-success btn-xs" href="{{ path('task_create') }}"><i class="fa fa-plus"></i> Create Task</a>#}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"></h3>
+
+            <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body table-responsive">
+            <table class="table table-hover">
+                <tbody><tr>
+                    <th>Name</th>
+                    <th class="text-center">School ID</th>
+                    <th>Father</th>
+                    <th>Mother</th>
+                    <th>Gender</th>
+                    <th>&nbsp;</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.nameEnglish }}</td>
+                    <td class="text-center">{{ student.schoolId }}</td>
+                    <td>{{ student.fathersNameEnglish }}</td>
+                    <td>{{ student.mothersNameEnglish }}</td>
+                    <td>
+                        {% if student.gender == 'male' %}
+                        <span class="label label-success">Male</span></td>
+                        {% else %}
+                        <span class="label label-info">Female</span></td>
+                        {% endif %}
+
+                    <td>
+                        <a href="{{ url('app_student_show', {'rowIndex': student.rowIndex }) }}" class="btn btn-default btn-xs">Details</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer text-center">
+            {{ pagerfanta(students, 'twitter_bootstrap3') }}
+        </div>
+    </div>
+{% endblock %}

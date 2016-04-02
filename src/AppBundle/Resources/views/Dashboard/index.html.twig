@@ -4,27 +4,67 @@
 
 {% block body %}
 
-{% set labels = ['Unassigned', 'In Progress', 'In Review', 'In Approval'] %}
-{% set colors = ['bg-aqua', 'bg-green', 'bg-yellow', 'bg-red'] %}
-{% set icons  = ['fa-tasks', 'fa-lock', 'fa-check-square', 'fa-check-square-o'] %}
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>150</h3>
 
-<div class="row">
-
-    {% for key in stats|keys %}
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box {{ colors[loop.index0] }}">
-            <div class="inner">
-                <h3>{{ stats[key] }}</h3>
-                <p>Tasks {{ labels[loop.index0] }}</p>
-            </div>
-            <div class="icon">
-                <i class="fa {{ icons[loop.index0] }}"></i>
+                    <p>New Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
-    </div>
-    {% endfor %}
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-</div>
+                    <p>Bounce Rate</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>44</h3>
+
+                    <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>65</h3>
+
+                    <p>Unique Visitors</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
 
 {% endblock %}

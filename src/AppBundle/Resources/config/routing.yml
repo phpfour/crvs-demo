@@ -6,99 +6,109 @@ dashboard:
     defaults:
         _controller: AppBundle:Dashboard:index
 
-### Task Resource Routes ###
-
-task_index:
-    path: /tasks/index
+### Education Resource Routes ###
+app_students:
+    path: /students
     methods: [GET]
     defaults:
-        _controller: app.controller.task:indexAction
-        action: show
-
-task_results:
-    path: /tasks/results
-    methods: [GET]
-    options:
-        expose: true
-    defaults:
-        _controller: app.controller.task:resultsAction
-
-group_task_index:
-    path: /tasks/group
-    methods: [GET]
-    defaults:
-        _controller: app.controller.task:groupTasksAction
-        action: show
-
-group_task_results:
-    path: /tasks/group/results
-    methods: [GET]
-    options:
-        expose: true
-    defaults:
-        _controller: app.controller.task:groupTasksResultsAction
-
-my_task_index:
-    path: /tasks/my
-    methods: [GET]
-    defaults:
-        _controller: app.controller.task:myTasksAction
-        action: show
-
-my_task_results:
-    path: /tasks/my/results
-    methods: [GET]
-    options:
-        expose: true
-    defaults:
-        _controller: app.controller.task:myTasksResultsAction
-
-task_create:
-    path: /tasks/new
-    methods: [GET, POST]
-    options:
-        expose: true
-    defaults:
-        _controller: app.controller.task:createAction
+        _controller: app.controller.student:indexAction
         _sylius:
-            redirect: task_show
+            paginate: 20
 
-task_show:
-    path: /tasks/{id}
+app_student_show:
+    path: /students/{rowIndex}
     methods: [GET]
-    options:
-        expose: true
     defaults:
-        _controller: app.controller.task:showAction
-
-task_update:
-    path: /tasks/{id}/edit
-    methods: [GET, PUT]
-    options:
-        expose: true
-    defaults:
-        _controller: app.controller.task:updateAction
+        _controller: app.controller.student:showAction
         _sylius:
-            form: app_task_edit
+            repository:
+                method: findWithAllRelated
+                arguments: [$rowIndex]
 
-task_delete:
-    path: /tasks/{id}
-    methods: [DELETE]
-    options:
-        expose: true
-    defaults:
-        _controller: app.controller.task:deleteAction
-
-task_lock:
-    path: /tasks/{id}/lock
-    methods: [GET]
-    options:
-        expose: true
-    defaults:
-        _controller: app.controller.task:lockAction
-
-image_update:
-    path: /images/update
-    methods: [POST]
-    defaults:
-        _controller: AppBundle:Image:updateTaskImages
+#task_results:
+#    path: /tasks/results
+#    methods: [GET]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:resultsAction
+#
+#group_task_index:
+#    path: /tasks/group
+#    methods: [GET]
+#    defaults:
+#        _controller: app.controller.task:groupTasksAction
+#        action: show
+#
+#group_task_results:
+#    path: /tasks/group/results
+#    methods: [GET]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:groupTasksResultsAction
+#
+#my_task_index:
+#    path: /tasks/my
+#    methods: [GET]
+#    defaults:
+#        _controller: app.controller.task:myTasksAction
+#        action: show
+#
+#my_task_results:
+#    path: /tasks/my/results
+#    methods: [GET]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:myTasksResultsAction
+#
+#task_create:
+#    path: /tasks/new
+#    methods: [GET, POST]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:createAction
+#        _sylius:
+#            redirect: task_show
+#
+#task_show:
+#    path: /tasks/{id}
+#    methods: [GET]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:showAction
+#
+#task_update:
+#    path: /tasks/{id}/edit
+#    methods: [GET, PUT]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:updateAction
+#        _sylius:
+#            form: app_task_edit
+#
+#task_delete:
+#    path: /tasks/{id}
+#    methods: [DELETE]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:deleteAction
+#
+#task_lock:
+#    path: /tasks/{id}/lock
+#    methods: [GET]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.task:lockAction
+#
+#image_update:
+#    path: /images/update
+#    methods: [POST]
+#    defaults:
+#        _controller: AppBundle:Image:updateTaskImages

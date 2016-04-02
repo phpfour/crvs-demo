@@ -104,80 +104,80 @@ stof_doctrine_extensions:
             uploadable: true
 
 # KNPSnappyBundle
-knp_snappy:
-    pdf:
-        enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf
-        options:
-            print-media-type: true
-    image:
-        # wkhtmltoimage is not installed as not required yet
-        enabled:    false
+#knp_snappy:
+#    pdf:
+#        enabled:    true
+#        binary:     /usr/local/bin/wkhtmltopdf
+#        options:
+#            print-media-type: true
+#    image:
+#        # wkhtmltoimage is not installed as not required yet
+#        enabled:    false
 
 # PheanstalkBundle
-leezy_pheanstalk:
-    enabled: true
-    pheanstalks:
-        primary:
-            server: 127.0.0.1
-            default: true
+#leezy_pheanstalk:
+#    enabled: true
+#    pheanstalks:
+#        primary:
+#            server: 127.0.0.1
+#            default: true
 
 # AuditBundle
-xiidea_easy_audit:
-    entity_class : AppBundle\Entity\AuditLog
-    user_property : username
-    doctrine_entities :
-        AppBundle\Entity\Audit : [created, updated, deleted]
-    events :
-        - security.interactive_login
-        - security.authentication.failure
-        - fos_user.security.implicit_login
-        - fos_user.change_password.edit.completed
-    logger_channel:
-        xiidea.easy_audit.logger.service: ["info"]
+#xiidea_easy_audit:
+#    entity_class : AppBundle\Entity\AuditLog
+#    user_property : username
+#    doctrine_entities :
+#        AppBundle\Entity\Audit : [created, updated, deleted]
+#    events :
+#        - security.interactive_login
+#        - security.authentication.failure
+#        - fos_user.security.implicit_login
+#        - fos_user.change_password.edit.completed
+#    logger_channel:
+#        xiidea.easy_audit.logger.service: ["info"]
 
-easy_admin:
-    entities:
-        - AppBundle\Entity\User
+#easy_admin:
+#    entities:
+#        - AppBundle\Entity\User
 
-k_phoen_doctrine_state_machine:
-    auto_injection:     true    # should we automatically inject state machines into hydrated objects?
-    auto_validation:    true    # should we validate any status change before the persistence happens?
-    state_machines:
-        task_state_machine:
-            class:      AppBundle\Entity\Task
-            property:   state
-            states:
-                draft: { type: initial }
-                new: ~
-                wip: ~
-                ready_for_review: ~
-                in_review: ~
-                ready_for_approval: ~
-                in_approval: ~
-                ready_for_publish: ~
-                published: { type: final }
-            transitions:
-                ready_for_entry:    { from: [draft], to: new }
-                start_entry:        { from: [new], to: wip }
-                ready_for_review:   { from: [wip], to: ready_for_review }
-                start_review:       { from: [ready_for_review], to: in_review }
-                ready_for_approval: { from: [in_review], to: ready_for_approval }
-                start_approval:     { from: [ready_for_approval], to: in_approval }
-                ready_for_publish:  { from: [in_approval], to: ready_for_publish }
-                publish:            { from: [ready_for_publish], to: published }
-
-hwi_oauth:
-    firewall_names: [main]
-    connect:
-        account_connector: app.provider.oauth
-    resource_owners:
-        google:
-            type: google
-            client_id: %google_oauth2_client_id%
-            client_secret: %google_oauth2_client_secret%
-            scope: %google_oauth2_scope%
-            paths:
-                email: email
-            options:
-                access_type: offline
+#k_phoen_doctrine_state_machine:
+#    auto_injection:     true    # should we automatically inject state machines into hydrated objects?
+#    auto_validation:    true    # should we validate any status change before the persistence happens?
+#    state_machines:
+#        task_state_machine:
+#            class:      AppBundle\Entity\Task
+#            property:   state
+#            states:
+#                draft: { type: initial }
+#                new: ~
+#                wip: ~
+#                ready_for_review: ~
+#                in_review: ~
+#                ready_for_approval: ~
+#                in_approval: ~
+#                ready_for_publish: ~
+#                published: { type: final }
+#            transitions:
+#                ready_for_entry:    { from: [draft], to: new }
+#                start_entry:        { from: [new], to: wip }
+#                ready_for_review:   { from: [wip], to: ready_for_review }
+#                start_review:       { from: [ready_for_review], to: in_review }
+#                ready_for_approval: { from: [in_review], to: ready_for_approval }
+#                start_approval:     { from: [ready_for_approval], to: in_approval }
+#                ready_for_publish:  { from: [in_approval], to: ready_for_publish }
+#                publish:            { from: [ready_for_publish], to: published }
+#
+#hwi_oauth:
+#    firewall_names: [main]
+#    connect:
+#        account_connector: app.provider.oauth
+#    resource_owners:
+#        google:
+#            type: google
+#            client_id: %google_oauth2_client_id%
+#            client_secret: %google_oauth2_client_secret%
+#            scope: %google_oauth2_scope%
+#            paths:
+#                email: email
+#            options:
+#                access_type: offline

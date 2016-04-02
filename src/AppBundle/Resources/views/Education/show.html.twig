@@ -1,0 +1,237 @@
+{% extends '::base.html.twig' %}
+
+{% block pageTitle %}Student Details{% endblock %}
+
+{% block body %}
+    {% set education = student[0] %}
+    {% set health = student[1] %}
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="box">
+
+                <div class="box-header">
+                    <h3 class="box-title">{{ education.nameEnglish }}</h3>
+                    {{ dump(education) }}
+                    {{ dump(health) }}
+                </div>
+
+                <div class="box-body">
+
+                    <div class="nav-tabs-custom">
+
+                        <ul class="nav nav-tabs nav-tabs-lg">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Basic</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">Health</a></li>
+                            <li><a href="#tab_3" data-toggle="tab">Household</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div class="tab-pane active" id="tab_1">
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+                                        <h4>Student Identity</h4>
+                                        <table class="table table-condensed no-border">
+                                            <tbody>
+                                                <tr>
+                                                    <th width="30%">Name (english)</th>
+                                                    <td width="70%">{{ education.nameEnglish }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Name (bangla)</th>
+                                                    <td>{{ education.nameBangla }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gender</th>
+                                                    <td>{{ education.gender|title }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Date of Birth</th>
+                                                    <td>{{ education.dateOfBirth }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Nationality</th>
+                                                    <td>{{ education.nationality|title }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Religion</th>
+                                                    <td>{{ education.relagion }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Disability</th>
+                                                    <td>{{ education.disability }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Identification Sign</th>
+                                                    <td>{{ education.visibleIdentifiSign|default('N/A') }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <hr>
+
+                                        <h4>Studentship Details</h4>
+                                        <table class="table table-condensed no-border">
+                                            <tbody>
+                                            <tr>
+                                                <th width="30%">School ID</th>
+                                                <td width="70%">{{ education.schoolId }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>School Name</th>
+                                                <td>{{ education.schoolName }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>School EIIN</th>
+                                                <td>{{ education.schoolsEiin }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>School Address</th>
+                                                <td>{{ education.schoolAddress }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Class Teacher</th>
+                                                <td>{{ education.classTeacherName }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Class Teacher NID</th>
+                                                <td>{{ education.classTeacherNid }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Class Teacher Date</th>
+                                                <td>{{ education.classTeacherDate }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Head Teacher Name</th>
+                                                <td>{{ education.headTeacherName }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Head Teacher NID</th>
+                                                <td>{{ education.headTeacherNid }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Head Teacher Date</th>
+                                                <td>{{ education.headTeacherDate }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <h4>Family Details</h4>
+                                        <table class="table table-condensed no-border">
+                                            <tbody>
+                                            <tr>
+                                                <th width="40%">Father's Name (english)</th>
+                                                <td width="60%">{{ education.nameEnglish }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Father's Name (bangla)</th>
+                                                <td>{{ education.nameBangla }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab_2">
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+                                        {#<h4>Family Details</h4>#}
+                                        <table class="table table-condensed no-border">
+                                            <tbody>
+                                            <tr>
+                                                <th width="40%">Date Of Birth</th>
+                                                <td width="60%">{{ health.dateOfBirth }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th width="40%">Place Of Birth</th>
+                                                <td width="60%">{{ health.placeOfBirth }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Birth Certificate No</th>
+                                                <td>{{ health.birthCertificateNo }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Marital Status</th>
+                                                <td>{{ health.maritalStatus|default('Not Updated') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Hasband / Wife Name</th>
+                                                <td>{{ health.hasbandOrWifeNameEnglish }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Hasband / Wife NID/Brn</th>
+                                                <td>{{ health.hasbandOrWifeNidBrnNo }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mobile No.</th>
+                                                <td>{{ health.mobileNo }}</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab_3">
+
+                                <div class="row">
+
+                                    <div class="col-md-12">
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="well" style="min-height: 300px; height: 1000px; overflow: scroll; font-size: 18px;">
+                                            Some content here 3
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block documentReady %}
+<script>
+
+jQuery(document).ready(function() {
+//    $('a[href="#tab_3"]').on('shown.bs.tab', function (e) {
+//        $('.sidebar-toggle').trigger('click');
+//    });
+});
+
+</script>
+{% endblock %}

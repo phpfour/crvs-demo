@@ -1,27 +1,17 @@
-{% if constant('ORGANIZATION') == 'DMC' %}
-    {% set skin = 'red' %}
-    {% set org = 'Dhaka Medical College' %}
-{% elseif constant('ORGANIZATION') == 'LGD' %}
-    {% set skin = 'blue' %}
-    {% set org = 'Local Government Division' %}
-{% else %}
-    {% set skin = 'green' %}
-    {% set org = 'Fulki School' %}
-{% endif %}
 <!DOCTYPE html>
 <html>
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}Welcome!{% endblock %} | {{ org }}</title>
+    <title>{% block title %}Welcome!{% endblock %} | Ministry of Education</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/AdminLTE.min.css') }}">
-    <link rel="stylesheet" href="{{ asset("assets/AdminLTE/dist/css/skins/skin-#{skin}.min.css") }}">
+    <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/datatables/media/css/dataTables.bootstrap.css') }} "/>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {% endblock %}
@@ -34,7 +24,7 @@
 <!-- END HEAD -->
 
 <!-- BEGIN BODY -->
-<body class="hold-transition skin-{{ skin }} sidebar-mini {% block bodyClass %}{% endblock %}">
+<body class="hold-transition skin-blue sidebar-mini {% block bodyClass %}{% endblock %}">
 
 <div class="wrapper">
 
@@ -43,8 +33,10 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini">MOE</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg">{{ org }}</span>
+            <span class="logo-lg">Ministry of <b>Education</b></span>
         </a>
 
         <!-- Header Navbar -->
@@ -111,11 +103,11 @@
 {% endblock %}
 
 {% block documentReady %}
-<script>
-    jQuery(document).ready(function() {
-        App.init();
-    });
-</script>
+    <script>
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
 {% endblock %}
 
 </body>

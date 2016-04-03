@@ -6,6 +6,12 @@ dashboard:
     defaults:
         _controller: AppBundle:Dashboard:index
 
+translate:
+    path: /translate
+    methods: [POST]
+    defaults:
+        _controller: app.controller.birth:translateAction
+
 ### Education Resource Routes ###
 app_students:
     path: /students
@@ -25,90 +31,129 @@ app_student_show:
                 method: findWithAllRelated
                 arguments: [$rowIndex]
 
-#task_results:
-#    path: /tasks/results
-#    methods: [GET]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:resultsAction
-#
-#group_task_index:
-#    path: /tasks/group
-#    methods: [GET]
-#    defaults:
-#        _controller: app.controller.task:groupTasksAction
-#        action: show
-#
-#group_task_results:
-#    path: /tasks/group/results
-#    methods: [GET]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:groupTasksResultsAction
-#
-#my_task_index:
-#    path: /tasks/my
-#    methods: [GET]
-#    defaults:
-#        _controller: app.controller.task:myTasksAction
-#        action: show
-#
-#my_task_results:
-#    path: /tasks/my/results
-#    methods: [GET]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:myTasksResultsAction
-#
-#task_create:
-#    path: /tasks/new
-#    methods: [GET, POST]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:createAction
-#        _sylius:
-#            redirect: task_show
-#
-#task_show:
-#    path: /tasks/{id}
-#    methods: [GET]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:showAction
-#
-#task_update:
-#    path: /tasks/{id}/edit
-#    methods: [GET, PUT]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:updateAction
-#        _sylius:
-#            form: app_task_edit
-#
-#task_delete:
-#    path: /tasks/{id}
-#    methods: [DELETE]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:deleteAction
-#
-#task_lock:
-#    path: /tasks/{id}/lock
-#    methods: [GET]
-#    options:
-#        expose: true
-#    defaults:
-#        _controller: app.controller.task:lockAction
-#
-#image_update:
-#    path: /images/update
-#    methods: [POST]
-#    defaults:
-#        _controller: AppBundle:Image:updateTaskImages
+### Patient ###
+patient_index:
+    path: /patients/
+    methods: [GET]
+    defaults:
+        _controller: app.controller.patient:indexAction
+        action: show
+
+patient_results:
+    path: /patients/results
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.patient:resultsAction
+        
+patient_create:
+    path: /patients/new
+    methods: [GET, POST]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.patient:createAction
+        _sylius:
+            form: AppBundle\Form\PatientType
+            redirect: patient_index
+
+patient_show:
+    path: /patients/view/{id}
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.patient:showAction
+        _sylius:
+            template: AppBundle:Patient:show.html.twig
+
+patient_update:
+    path: /patients/edit/{id}
+    methods: [GET, PUT]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.patient:updateAction
+        _sylius:
+            form: AppBundle\Form\PatientType
+            redirect: patient_index
+
+patient_delete:
+    path: /patients/delete/{id}
+    methods: [DELETE]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.patient:deleteAction
+
+### Birth ###
+birth_index:
+    path: /birth/
+    methods: [GET]
+    defaults:
+        _controller: app.controller.birth:indexAction
+        action: show
+
+birth_results:
+    path: /birth/results
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.birth:resultsAction
+
+birth_events:
+    path: /birth/events
+    methods: [GET]
+    defaults:
+        _controller: app.controller.birth:eventsAction
+
+birth_events_results:
+    path: /birth/events/results
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.birth:eventResultsAction
+
+birth_create:
+    path: /birth/new
+    methods: [GET, POST]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.birth:createAction
+        _sylius:
+            form: AppBundle\Form\BirthType
+            template: AppBundle:Birth:create.html.twig
+            redirect: patient_index
+
+birth_show:
+    path: /birth/view/{id}
+    methods: [GET]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.birth:showAction
+        _sylius:
+            template: AppBundle:Birth:show.html.twig
+
+birth_update:
+    path: /birth/edit/{id}
+    methods: [GET, PUT]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.birth:updateAction
+        _sylius:
+            form: AppBundle\Form\BirthRegisterType
+            redirect: birth_show
+
+birth_delete:
+    path: /birth/delete/{id}
+    methods: [DELETE]
+    options:
+        expose: true
+    defaults:
+        _controller: app.controller.birth:deleteAction

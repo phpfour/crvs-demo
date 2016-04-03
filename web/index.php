@@ -5,6 +5,8 @@ defined('APPLICATION_ENV')
 
 define('WEB_PATH', __DIR__);
 
+define('ORGANIZATION', 'LGD');
+
 if (APPLICATION_ENV == 'prod') {
     require 'app.php';
 } else {

@@ -11,6 +11,16 @@ services:
         tags:
             - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
 
+    app.datatable.patient:
+        class: AppBundle\Datatables\PatientDatatable
+        tags:
+            - { name: sg.datatable.view }
+
+    app.datatable.birth:
+        class: AppBundle\Datatables\BirthDatatable
+        tags:
+            - { name: sg.datatable.view }
+
 #    app.datatable.task:
 #        class: AppBundle\Datatables\TaskDatatable
 #        tags:

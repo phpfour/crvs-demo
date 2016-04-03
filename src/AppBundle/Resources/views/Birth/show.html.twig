@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block pageTitle %}View Birth Certificate{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="box">
+
+                <div class="box-body">
+                    <img src="{{ asset('images/birth_cert.png') }}" style="width: 1000px;" /> <br /><br />
+                    <a class="btn btn-primary" target="_blank" href="{{ asset('images/birth_cert.png') }}">Print</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

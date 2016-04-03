@@ -23,25 +23,15 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-//            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-//            new Leezy\PheanstalkBundle\LeezyPheanstalkBundle(),
-//            new Xiidea\EasyAuditBundle\XiideaEasyAuditBundle(),
-
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-//            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-//            new EightPoints\Bundle\GuzzleBundle\GuzzleBundle(),
 
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-//            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
-//            new \APY\DataGridBundle\APYDataGridBundle(),
+            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
 
-//            new Sg\DatatablesBundle\SgDatatablesBundle(),
-//            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-//            new KPhoen\DoctrineStateMachineBundle\KPhoenDoctrineStateMachineBundle(),
-//            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
 
             new AppBundle\AppBundle(),
         );

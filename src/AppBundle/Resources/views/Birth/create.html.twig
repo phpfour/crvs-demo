@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block pageHeader %}
+
+    <!-- BEGIN PAGE HEADER-->
+    <h3 class="page-title">
+        {% block pageTitle %}New Infant{% endblock %}
+    </h3>
+    <!-- END PAGE HEADER-->
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <form action="" method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+                <input class="btn btn-primary" type="submit" value=" Submit " />
+
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block documentReady %}
+    <script>
+        jQuery(document).ready(function() {
+            $('#birth_fatherNameEnglish').val("{{ patient.husbandName }}");
+            $('#birth_fatherNID').val("{{ patient.husbandNidNumber }}");
+            $('#birth_motherNameEnglish').val("{{ patient.name }}");
+            $('#birth_motherNID').val("{{ patient.nidNumber }}");
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,292 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block pageHeader %}
+    <!-- BEGIN PAGE HEADER-->
+    <h3 class="page-title">
+        {% block pageTitle %}Birth Registration{% endblock %}
+    </h3>
+    <!-- END PAGE HEADER-->
+
+{% endblock %}
+
+{% block body %}
+
+    <form action="{{ path(routes['update'], {'id': entity.id}) }}" method="post" {{ form_enctype(form) }}>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="box" style="padding: 0 10px;">
+
+                    <div class="box-header with-border">
+                        <i class="fa fa-info"></i>
+                        <h3 class="box-title">Personal Information</h3>
+                    </div>
+
+                    <div class="box-body">
+
+                        <div class="row" style="margin-bottom: 20px;">
+
+                            <div class="col-md-6" style="margin-top: 10px;">
+                                {{ form_row(form.birthDate) }}
+                            </div>
+
+                            <div class="col-md-6" style="margin-top: 10px;">
+                                {{ form_row(form.gender) }}
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label required" for="birth_register_fatherNID">Name</label>
+                                    <div class="input-group input-group-sm">
+                                        {{ form_widget(form.name) }}
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary btn-flat btn-translate" type="button">
+                                                <i class="fa fa-angle-right"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                {{ form_row(form.nameEnglish) }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="box" style="padding: 0 10px;">
+
+                    <div class="box-header with-border">
+                        <i class="fa fa-user"></i>
+                        <h3 class="box-title">Mother's Information</h3>
+                    </div>
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-7">
+
+                                <div class="form-group">
+                                    <label class="control-label required" for="birth_register_motherNID">Mother's NID</label>
+                                    <div class="input-group input-group-sm">
+                                        {{ form_widget(form.motherNID) }}
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary btn-flat" type="button">Check</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label required" for="birth_register_motherName">Mother's Name</label>
+                                    <div class="input-group input-group-sm">
+                                        {{ form_widget(form.motherName) }}
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary btn-flat btn-translate" type="button">
+                                                <i class="fa fa-angle-right"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {{ form_row(form.motherNameEnglish) }}
+                                {{ form_row(form.motherNationality) }}
+
+                            </div>
+
+                            <div class="col-md-5">
+                                <img src="http://placehold.it/120x120" class="margin" style="margin-top: 20px;" />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="box" style="padding: 0 10px;">
+
+                    <div class="box-header with-border">
+                        <i class="fa fa-user"></i>
+                        <h3 class="box-title">Father's Information</h3>
+                    </div>
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-7">
+
+                                <div class="form-group">
+                                    <label class="control-label required" for="birth_register_fatherNID">Father's NID</label>
+                                    <div class="input-group input-group-sm">
+                                        {{ form_widget(form.fatherNID) }}
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary btn-flat" type="button">Check</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label required" for="birth_register_fatherName">Father's Name</label>
+                                    <div class="input-group input-group-sm">
+                                        {{ form_widget(form.fatherName) }}
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary btn-flat btn-translate" type="button">
+                                                <i class="fa fa-angle-right"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {{ form_row(form.fatherNameEnglish) }}
+                                {{ form_row(form.fatherNationality) }}
+
+                            </div>
+
+                            <div class="col-md-5">
+                                <img src="http://placehold.it/120x120" class="margin" style="margin-top: 20px;" />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="box" style="padding: 0 10px;">
+
+                    <div class="box-header with-border">
+                        <i class="fa fa-user"></i>
+                        <h3 class="box-title">Address Information</h3>
+                    </div>
+
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+
+                                <label>Birth Place</label>
+
+                                <div class="form-group">
+
+                                    <div class="radio inline">
+                                        <label>
+                                            <input type="radio" name="birth-location" value="local" checked="checked" />
+                                            Local
+                                        </label>
+                                    </div> &nbsp;
+
+                                    <div class="radio inline">
+                                        <label>
+                                            <input type="radio" name="birth-location" value="international" />
+                                            International
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div class="birth-district">
+                                    {{ form_row(form.birthDistrict) }}
+                                </div>
+
+                                <div class="birth-country">
+                                    {{ form_row(form.birthCountry) }}
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                {{ form_row(form.presentAddress) }}
+                            </div>
+
+                            <div class="col-md-4">
+                                {{ form_row(form.permanentAddress) }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        {{ form_rest(form) }}
+        <input type="hidden" name="_method" value="PUT" />
+        <input class="btn btn-primary" type="submit" value=" Submit " />
+
+    </form>
+
+{% endblock %}
+
+{% block documentReady %}
+    <script>
+        jQuery(document).ready(function() {
+
+            $('input[name="birth-location"]').on('click', function(e){
+                if ($(this).val() == 'local') {
+                    $('.birth-district').show();
+                    $('.birth-country').hide();
+                } else {
+                    $('.birth-district').hide();
+                    $('.birth-country').show();
+                }
+            });
+
+            $('input[name="birth-location"]').trigger('click');
+
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+            if ($('#birth_register_brnNumber').val() == '') {
+                $('#birth_register_brnNumber').val('197712345678923' + getRandomInt(100, 500));
+            }
+
+            $('.btn-translate').on('click', function(){
+                var $input = $(this).parent().parent().find('input');
+                var name = $input.val();
+                $.post('/translate', {'name': name}, function(response){
+                    $('#' + $input.attr('id') + 'English').val(response);
+                });
+            })
+        });
+
+    </script>
+{% endblock %}

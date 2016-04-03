@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block pageHeader %}
+    <!-- BEGIN PAGE HEADER-->
+    <h3 class="page-title">
+        {% block pageTitle %}Update {{ entityName }}{% endblock %}
+    </h3>
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li><i class="fa fa-home"></i><a href="/">Home</a><i class="fa fa-angle-right"></i></li>
+            <li><a href="{{ path(routes['index']) }}">{{ pageTitle }}</a><i class="fa fa-angle-right"></i></li>
+            <li><a href="#">Update {{ entityName }}</a></li>
+        </ul>
+    </div>
+    <!-- END PAGE HEADER-->
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <form action="{{ path(routes['update'], {'id': entity.id}) }}" method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+                <input type="hidden" name="_method" value="PUT" />
+                <input class="btn green" type="submit" value=" Submit " />
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

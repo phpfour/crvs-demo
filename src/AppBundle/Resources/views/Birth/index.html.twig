@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block pageTitle %}Birth Registrations{% endblock %}
+
+{% block titleAction %}
+    {% if 'create' in routes %}
+        <a class="btn btn-primary btn-xs" href="{{ path(routes['create']) }}">{{ addButton }}</a>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="box">
+        <div class="box-body">
+            {{ datatable_render_html(datatable) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ datatable_render_js(datatable) }}
+{% endblock %}

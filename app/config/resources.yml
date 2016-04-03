@@ -8,12 +8,19 @@ sylius_resource:
                 model: AppBundle\Entity\PrimaryEducation
                 controller: AppBundle\Controller\PrimaryEducationController
                 repository: AppBundle\Repository\PrimaryEducationRepository
-
-#        app.image:
-#            driver: doctrine/orm
-#            object_manager: default
-#            templates: AppBundle:Image
-#            classes:
-#                model: AppBundle\Entity\Image
-#                controller: AppBundle\Controller\ImageController
-#                repository: AppBundle\Repository\ImageRepository
+        app.patient:
+            driver: doctrine/orm
+            object_manager: default
+            templates: AppBundle:CRUD
+            classes:
+                model: AppBundle\Entity\Patient
+                controller: AppBundle\Controller\PatientController
+                repository: AppBundle\Repository\PatientRepository
+        app.birth:
+            driver: doctrine/orm
+            object_manager: default
+            templates: AppBundle:Birth
+            classes:
+                model: AppBundle\Entity\Birth
+                controller: AppBundle\Controller\BirthController
+                repository: AppBundle\Repository\BirthRepository
